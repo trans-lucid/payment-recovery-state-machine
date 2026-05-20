@@ -8,3 +8,12 @@
 | 4 | streaming-chat-budget-tools | full-stack AI, streaming, tools, budget, UI state | fake streaming model and tool simulator | golden | previously accepted |
 | 5 | agent-trace-evaluator | AI evals, agent trajectory scoring | fake trace API, Jaeger | golden | previously accepted |
 | 6 | payment-recovery-state-machine | backend reliability, fintech, payment recovery | Postgres, WireMock, LocalStack SQS | golden | local validation, remote CI, and fresh-clone proof passed |
+## Machine-Readable Contract Migration
+
+- machine_readable_manifest: present
+- root_make_aliases: present
+- render_context_support: present
+- check_render_contract: present
+- scan_safety_uses_manifest: present
+- remote_ci_manifest_validation: pending
+

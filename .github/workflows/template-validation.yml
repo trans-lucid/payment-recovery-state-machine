@@ -21,23 +21,29 @@ jobs:
       - name: Install root dependencies
         run: npm ci
 
+      - name: Validate manifest
+        run: python3 -m json.tool translucid-template.json >/dev/null
+
       - name: Validate solution
-        run: npm run validate:solution
+        run: make validate-solution
 
       - name: Validate expected starter failure
-        run: npm run validate:candidate-main-expected-failure
+        run: make validate-candidate-main-expected-failure
 
       - name: Render template
-        run: npm run render
+        run: make render
+
+      - name: Check render contract
+        run: make check-render
 
       - name: Safety scan
-        run: npm run scan:safety
+        run: make scan-safety
 
       - name: Rendered repo smoke test
-        run: npm run validate:rendered-smoke
+        run: make validate-rendered-smoke
 
       - name: Docker-backed integration expected failure
-        run: npm run validate:docker-integration
+        run: make validate-docker-integration
 
       - name: Dump Docker logs on failure
         if: failure()
