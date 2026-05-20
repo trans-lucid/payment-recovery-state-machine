@@ -1,0 +1,21 @@
+# Solution Notes
+
+The reference solution makes payment creation idempotent before external gateway work begins.
+
+Key behaviors:
+
+- It hashes the payment request excluding the idempotency key.
+- It returns the original payment intent for identical retries.
+- It rejects the same idempotency key when amount, currency, customer, tenant, or order changes.
+- It treats gateway timeout as `pending_reconciliation`, not `failed`.
+- It enqueues timeout recovery work to LocalStack SQS.
+- The reconciliation worker queries gateway truth before finalizing state.
+- Fulfillment remains blocked for partial settlement and ambiguous states.
+- The recovery report includes local state, gateway evidence, and an operator action.
+
+The starter intentionally fails on:
+
+- `duplicate_gateway_charge`
+- `timeout_marked_failed`
+- `missing_gateway_evidence`
+- `settlement_state_wrong`

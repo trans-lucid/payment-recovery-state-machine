@@ -1,0 +1,57 @@
+id: payment-recovery-state-machine
+title: Payment Recovery State Machine
+area: backend-reliability
+language: typescript
+roles:
+  - Backend Engineer
+  - Staff Backend
+  - Fintech Backend
+  - Platform Engineer
+seniority:
+  - senior
+  - staff
+time_minutes:
+  medium: 75
+  hard: 100
+  staff: 120
+local_services:
+  - postgres
+  - wiremock
+  - localstack-sqs
+no_external_credentials: true
+evaluation_axes:
+  - idempotency
+  - payment state modeling
+  - retry safety
+  - timeout reconciliation
+  - settlement correctness
+  - operator visibility
+source_signals:
+  - stripe
+  - payment intent
+  - idempotency key
+  - checkout
+  - billing
+  - settlement
+  - refund
+  - gateway timeout
+  - sqs
+  - postgres
+candidate_expected_failure:
+  - duplicate_gateway_charge
+  - timeout_marked_failed
+  - missing_gateway_evidence
+  - settlement_state_wrong
+hidden_test_strategy:
+  - timeout after gateway create
+  - idempotency conflict
+  - pending to captured reconciliation
+  - partial settlement hold
+  - duplicate worker idempotency
+  - report evidence completeness
+forbidden:
+  - one-file-helper
+  - hardcoded-public-fixtures
+  - local-db-only-report
+  - bypass-wiremock
+  - bypass-sqs

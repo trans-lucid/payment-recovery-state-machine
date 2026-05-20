@@ -1,0 +1,9 @@
+node_modules/
+generated/
+coverage/
+dist/
+.DS_Store
+.env
+candidate/results/*
+!candidate/results/.gitkeep
+solution/expected/generated/

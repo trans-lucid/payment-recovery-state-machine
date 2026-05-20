@@ -1,0 +1,17 @@
+{
+  "public-success-key": {
+    "mode": "success",
+    "gatewayChargeId": "gw_public_success",
+    "status": "captured"
+  },
+  "public-timeout-key": {
+    "mode": "timeout_after_create",
+    "gatewayChargeId": "gw_public_timeout",
+    "statusAfterReconciliation": "captured"
+  },
+  "public-duplicate-key": {
+    "mode": "success",
+    "gatewayChargeId": "gw_public_duplicate",
+    "status": "captured"
+  }
+}

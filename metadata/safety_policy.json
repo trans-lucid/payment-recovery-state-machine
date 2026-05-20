@@ -1,0 +1,26 @@
+{
+  "template_id": "payment-recovery-state-machine",
+  "no_external_credentials": true,
+  "no_cloud_calls": true,
+  "no_startup_source_copying": true,
+  "no_real_customer_data": true,
+  "candidate_main_forbidden_paths": [
+    "solution/",
+    "evaluator/",
+    "tests_hidden/",
+    "fixtures_hidden/",
+    "SOLUTION.md",
+    "rubric.md",
+    "source-dossiers/",
+    "template.yaml"
+  ],
+  "required_scans": [
+    "tools/scan_safety.py",
+    "external secret scan before customer source-slice mode"
+  ],
+  "allowed_local_services": [
+    "postgres",
+    "wiremock",
+    "localstack-sqs"
+  ]
+}

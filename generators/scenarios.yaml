@@ -1,0 +1,13 @@
+medium:
+  payments: 20
+  timeout_cases: 2
+  idempotency_conflicts: 1
+hard:
+  payments: 80
+  timeout_cases: 8
+  idempotency_conflicts: 4
+staff:
+  payments: 200
+  timeout_cases: 20
+  idempotency_conflicts: 10
+  partial_settlements: 12

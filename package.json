@@ -1,0 +1,26 @@
+{
+  "name": "translucid-template-payment-recovery-state-machine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:solution": "EVAL_TARGET=$PWD/solution vitest run --config vitest.config.ts candidate/tests/public/unit.test.ts solution/tests/*.test.ts evaluator/tests_hidden/*.test.ts",
+    "validate:candidate-main-expected-failure": "bash tools/expect_candidate_failure.sh",
+    "validate:docker-integration": "bash tools/expect_candidate_docker_failure.sh",
+    "render": "python3 tools/render_template.py",
+    "scan:safety": "python3 tools/scan_safety.py generated/main",
+    "validate:rendered-smoke": "bash tools/validate_rendered_smoke.sh",
+    "validate": "npm run validate:solution && npm run validate:candidate-main-expected-failure && npm run render && npm run scan:safety && npm run validate:rendered-smoke && npm run validate:docker-integration"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.821.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/pg": "^8.15.4",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  }
+}

@@ -1,0 +1,52 @@
+# Payment Recovery State Machine
+
+You are inheriting a payment API where customers can be charged twice or left in an ambiguous state when the payment gateway times out.
+
+Your task is to make payment creation and recovery safe:
+
+- idempotent payment creation
+- payment state-machine transitions
+- timeout reconciliation
+- retry-safe gateway calls
+- settlement and fulfillment truth table
+- operator-facing recovery report
+
+## What Is Provided
+
+This repo includes a local production simulator:
+
+- Postgres stores payment intents, idempotency keys, settlement rows, and reports.
+- WireMock simulates the external payment gateway.
+- LocalStack SQS holds reconciliation work after ambiguous timeouts.
+
+No external credentials or live payment providers are required.
+
+## Main Files To Edit
+
+- `src/server.ts`
+- `src/paymentState.ts`
+- `src/idempotency.ts`
+- `src/gatewayClient.ts`
+- `src/reconciliationWorker.ts`
+- `src/settlementReport.ts`
+- `src/db.ts`
+
+## Commands
+
+```bash
+npm ci
+make dev
+make seed
+make test
+make test-integration
+make eval
+make clean
+```
+
+## Deliverables
+
+- Passing public tests.
+- `results/payment_recovery_report.json` from `make eval`.
+- A concise debrief explaining your state model, idempotency decisions, and recovery behavior.
+
+Private tests add harder gateway timeout, idempotency conflict, settlement, duplicate worker, and report-evidence cases.

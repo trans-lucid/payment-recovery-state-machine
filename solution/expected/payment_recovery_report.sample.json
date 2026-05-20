@@ -1,0 +1,8 @@
+{
+  "payments": [
+    {
+      "state": "pending_reconciliation",
+      "recommendedAction": "check gateway truth before retrying or fulfilling"
+    }
+  ]
+}

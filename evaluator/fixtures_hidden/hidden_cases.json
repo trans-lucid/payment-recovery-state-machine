@@ -1,0 +1,8 @@
+[
+  "timeout_after_gateway_create",
+  "idempotency_key_conflict",
+  "pending_to_captured_reconciliation",
+  "partial_settlement_hold",
+  "duplicate_worker_idempotency",
+  "operator_report_gateway_evidence"
+]

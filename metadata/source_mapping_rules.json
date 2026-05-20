@@ -1,0 +1,46 @@
+{
+  "template_id": "payment-recovery-state-machine",
+  "positive_signals": [
+    "stripe",
+    "payment intent",
+    "checkout",
+    "billing",
+    "invoice",
+    "settlement",
+    "capture",
+    "authorization",
+    "idempotency key",
+    "gateway timeout",
+    "payment retry",
+    "sqs",
+    "postgres"
+  ],
+  "negative_signals": [
+    "pure frontend only",
+    "no billing path",
+    "read-only analytics"
+  ],
+  "stack_matches": [
+    "typescript",
+    "node",
+    "express",
+    "postgres",
+    "aws",
+    "sqs",
+    "stripe"
+  ],
+  "best_roles": [
+    "Backend Engineer",
+    "Staff Backend",
+    "Fintech Backend",
+    "Platform Engineer"
+  ],
+  "personalization_knobs": [
+    "gateway provider naming",
+    "settlement states",
+    "tenant billing nouns",
+    "order and fulfillment fields",
+    "retry queue naming",
+    "operator report schema"
+  ]
+}
